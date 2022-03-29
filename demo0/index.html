@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .wrapper {
+           text-align: center;
+        }
+
+        input {
+            width: 250px;
+            height: 35px;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+            display: flex;
+            margin-bottom: 30px;
+            color: black;
+        }
+        img {
+            width: 300px;
+            height: 300px;
+        }
+        .content {
+            margin-left: 30px;
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="search">
+            <input type="text" class = "input">
+        </div>
+        <div class="block">
+            <ul class="list"></ul>
+        </div>
+        
+    </div>
+
+    <script>
+        const search = document.querySelector(".search")
+        const box = document.querySelector(".input")
+        const newsList = document.querySelector(".list")
+
+        search.addEventListener('keyup', function(event) {
+            if(box.value == "") {
+                alert("input khong de trong")
+            }
+            console.log(event.keyCode)
+            if(event.keyCode === 13) {
+                newsList.innerHTML = ''
+                event.preventDefault()
+                const apiKey = "bc533a50ce714156896a51f020d3988c"
+                let topic = box.value
+               
+                let apiNews = `https://newsapi.org/v2/everything?q=${topic}&apiKey=${apiKey}`
+
+                fetch(apiNews).then((res) => {
+                    return res.json()
+                }).then((data) => {
+                    console.log(data)
+                    data.articles.forEach(article => {
+                        let liNode = document.createElement('li')
+                        let a = document.createElement('a')
+                        a.setAttribute('href', article.url)
+                        a.innerHTML = `
+                            <img src = "${article.urlToImage}"/>
+                            <div class="content" >
+                            <h1>${article.title}</h1>
+                            <p>${article.content}</p>
+                            </div>
+                        `
+                        
+                        liNode.appendChild(a)
+                        newsList.appendChild(liNode)
+                    })
+                })
+
+                console.log(topic)
+            }
+        })
+    </script>
+</body>
+</html>

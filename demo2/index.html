@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const mang = new Array(10, 5, 2, 5, 6, 7, 8, 9);
+        async function _mang() {
+            let sum = await new Promise(function (res) {
+                setTimeout(function () {
+                    let sum;
+                    sum = mang.reduce((acc, number) => {
+                        return acc + number
+                    })
+                    res(sum)
+                }, 3000)
+            })
+            console.log("tong cac so:" + sum)
+
+            let giaithua = await new Promise(function () {
+                setTimeout(function () {
+                    const handleFact = (item) => {
+                        return item === 0 ? 1 : item * handleFact(item - 1)
+                    }
+                    console.log(mang.map(handleFact));
+                }, 4000)
+            })
+        }
+        _mang()
+
+        setTimeout(() => {
+            let newArr = mang.filter((number) => {
+                for (var i = 2; i <= Math.sqrt(number); i++) {
+                    if (number % i === 0) return false;
+                }
+                return true;
+            });
+
+            console.log(newArr);
+        }, 3000)
+        setTimeout(() => {
+            const divisibleFor3 = mang.filter((number) => {
+                return number % 3 === 0
+            })
+            console.log(divisibleFor3);
+        }, 3000)
+
+    </script>
+</body>
+
+</html>

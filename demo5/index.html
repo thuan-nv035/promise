@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        async function phuongtrinhbac2() {
+            let giaiphuongtrinh = new Promise(function () {
+                let a = Math.floor(Math.random() * 1001) + 5;
+                let b = Math.floor(Math.random() * 1001) + 5;
+                let c = Math.floor(Math.random() * 1001) + 5;
+                console.log('a =' +a)
+                console.log('b =' +b)
+                console.log('c =' +c)
+                if (a == 0) {
+                    if (b == 0) {
+                        if (c == 0) {
+                            console.log('Phuong trinh vo so nghiem')
+                        } else {
+                            console.log('Phuong trinh vo nghiem')
+                        }
+                    } else {
+                        console.log('Phuong trinh co nghiem duy nhat: ' + (-c / b))
+                    }
+                } else {
+                    let delta = b * b - 4 * a * c;
+                    if (delta > 0) {
+                        let x1 = (-b + Math.sqrt(delta)) / (2 * a);
+                        let x2 = (-b - Math.sqrt(delta)) / (2 * a);
+                        console.log('Nghiem thu nhat x1 = ' + x1 + '\n Nghiem thu hai x2 = ' + x2)
+                    } else if (delta == 0) {
+                        let sum = -b / 2 * a
+                        console.log('Phuong trinh co nghiem kep: x1 = x2 = ' + sum)
+                    } else {
+                        console.log('Phuong trinh vo nghiem')
+                    }
+                }
+                })
+        }
+        phuongtrinhbac2()
+    </script>
+</body>
+
+</html>

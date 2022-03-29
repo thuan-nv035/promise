@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+         const arr = []
+         async function array() {
+             let add = new Promise(() => {
+                 setTimeout(() => {
+                    let a = Math.floor(Math.random() * 101);
+                    arr.push(a)
+                 },2000)
+             })
+             console.log(add)
+             let add1 = new Promise(() => {
+                 setTimeout(() => {
+                    let b = Math.floor(Math.random() * 101);
+                    arr.push(b)
+                 },3000)
+             })
+             let add2 = new Promise(() => {
+                 setTimeout(() => {
+                    let c = Math.floor(Math.random() * 101);
+                    arr.push(c)
+                 },4000)
+             })
+             let add3 = new Promise(() => {
+                 setTimeout(() => {
+                    let d = Math.floor(Math.random() * 101);
+                    arr.push(d)
+                 },5000)
+             })
+             console.log(add3)
+
+             let lonhon5 = new Promise(() => {
+                 setTimeout(() => {
+                    let n = arr.find((item) => {
+                        return item > 5
+                    })
+                 },4000)
+             })
+             console.log(lonhon5)
+         }
+         array()
+    </script>
+</body>
+</html>
